@@ -1,5 +1,5 @@
 {
-  "name": "alzhemierMonitoringApp",
+  "name": "alzheimerMonitoringApp",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -11,10 +11,13 @@
     "native-base": "^2.13.8",
     "react": "16.8.6",
     "react-native": "0.60.5",
+    "react-native-firebase": "^5.6.0",
     "react-native-gesture-handler": "^1.4.1",
+    "react-native-linear-gradient": "^2.5.6",
     "react-native-reanimated": "^1.2.0",
     "react-native-screens": "^1.0.0-alpha.23",
-    "react-navigation": "^4.0.9"
+    "react-navigation": "^4.0.9",
+    "react-navigation-stack": "^1.9.4"
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
