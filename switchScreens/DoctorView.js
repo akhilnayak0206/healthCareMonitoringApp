@@ -41,7 +41,7 @@ class DoctorView extends Component {
           <List>
             <ListItem avatar>
               <Left>
-                <Thumbnail source={require('./images/doctor.jpg')} />
+                <Thumbnail source={require('../images/doctor.jpg')} />
               </Left>
               <Body>
                 <Text>Kumar Pratik</Text>
@@ -51,7 +51,7 @@ class DoctorView extends Component {
             </ListItem>
             <ListItem avatar>
               <Left>
-                <Thumbnail source={require('./images/doctor.jpg')} />
+                <Thumbnail source={require('../images/doctor.jpg')} />
               </Left>
               <Body>
                 <Text>Jumar Thapik</Text>
@@ -61,7 +61,7 @@ class DoctorView extends Component {
             </ListItem>
             <ListItem avatar>
               <Left>
-                <Thumbnail source={require('./images/doctor.jpg')} />
+                <Thumbnail source={require('../images/doctor.jpg')} />
               </Left>
               <Body>
                 <Text>boris manic</Text>

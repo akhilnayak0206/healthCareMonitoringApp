@@ -51,7 +51,7 @@ class LoginScreen extends Component {
     return (
       <Form style={styles.container}>
         <Image
-          source={require('./images/alzheimerLogo.jpg')}
+          source={require('../images/alzheimerLogo.jpg')}
           style={styles.backgroundImage}
         />
         <Item floatingLabel>

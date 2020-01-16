@@ -13,8 +13,8 @@ import {
 
 // import {Button, Form, Item, Label, Input} from 'native-base';
 import SwitchScreens from './SwitchScreens';
-import CaretakerView from './CaretakerView';
-import DoctorView from './DoctorView';
+// import CaretakerView from './CaretakerView';
+// import DoctorView from './DoctorView';
 
 class App extends Component {
   constructor(props) {

@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
+    "clean-start": "cd android && gradlew clean && cd .. && react-native run-android",
     "test": "jest",
     "lint": "eslint ."
   },
@@ -15,7 +16,7 @@
     "react-native-firebase": "^5.6.0",
     "react-native-gesture-handler": "^1.4.1",
     "react-native-linear-gradient": "^2.5.6",
-    "react-native-maps": "^0.26.1",
+    "react-native-maps": "0.26.1",
     "react-native-reanimated": "^1.2.0",
     "react-native-screens": "^1.0.0-alpha.23",
     "react-navigation": "^4.0.9",

@@ -4,10 +4,10 @@ import {createStackNavigator} from 'react-navigation-stack';
 // Implementation of HomeScreen, OtherScreen, SignInScreen, AuthLoadingScreen
 // goes here.
 
-import LoginScreen from './LoginScreen';
-import LoadingScreen from './LoadingScreen';
-import CaretakerView from './CaretakerView';
-import DoctorView from './DoctorView';
+import LoginScreen from './switchScreens/LoginScreen';
+import LoadingScreen from './switchScreens/LoadingScreen';
+import CaretakerView from './switchScreens/CaretakerView';
+import DoctorView from './switchScreens/DoctorView';
 
 export default createAppContainer(
   createSwitchNavigator(
