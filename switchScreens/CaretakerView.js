@@ -34,6 +34,8 @@ import firebase from 'react-native-firebase';
 
 import DoctorsInfo from './caretakerScreens/DoctorsInfo';
 import Gps from './caretakerScreens/Gps';
+import Heart from './caretakerScreens/Heart';
+import StackProfile from './caretakerScreens/StackProfile';
 
 class CaretakerView extends Component {
   render() {
@@ -49,6 +51,19 @@ class CaretakerView extends Component {
         <Tabs tabBarPosition="bottom" tabBarBackgroundColor="#71D7F2">
           <Tab
             tabBarUnderlineStyle={{backgroundColor: '#71D7F2'}}
+            heading="Heart"
+            tabStyle={{backgroundColor: '#71D7F2'}}
+            textStyle={{color: '#000', textAlign: 'center'}}
+            activeTabStyle={{backgroundColor: '#71D7F2'}}
+            activeTextStyle={{
+              color: '#fff',
+              fontWeight: 'normal',
+              textAlign: 'center',
+            }}>
+            <Heart />
+          </Tab>
+          <Tab
+            tabBarUnderlineStyle={{backgroundColor: '#71D7F2'}}
             heading="GPS"
             tabStyle={{backgroundColor: '#71D7F2'}}
             textStyle={{color: '#000', textAlign: 'center'}}
@@ -60,21 +75,6 @@ class CaretakerView extends Component {
             }}>
             <Gps />
           </Tab>
-
-          <Tab
-            tabBarUnderlineStyle={{backgroundColor: '#71D7F2'}}
-            heading="Heart"
-            tabStyle={{backgroundColor: '#71D7F2'}}
-            textStyle={{color: '#000', textAlign: 'center'}}
-            activeTabStyle={{backgroundColor: '#71D7F2'}}
-            activeTextStyle={{
-              color: '#fff',
-              fontWeight: 'normal',
-              textAlign: 'center',
-            }}>
-            <Text>Heart</Text>
-          </Tab>
-
           <Tab
             tabBarUnderlineStyle={{backgroundColor: '#71D7F2'}}
             heading="Games"
@@ -112,13 +112,7 @@ class CaretakerView extends Component {
               fontWeight: 'normal',
               textAlign: 'center',
             }}>
-            <Button
-              onPress={() => {
-                firebase.auth().signOut();
-                this.props.navigation.navigate('LoginScreen');
-              }}>
-              <Text>Log out this button will not be there</Text>
-            </Button>
+            <StackProfile />
           </Tab>
         </Tabs>
       </View>

@@ -15,7 +15,7 @@ class DoctorsInfo extends Component {
   render() {
     return (
       <View style={{flex: 1, padding: '2.5%'}}>
-        <Card style={{}}>
+        <Card>
           <CardItem header bordered>
             <Left>
               <Thumbnail source={require('../../images/doctor.jpg')} />
