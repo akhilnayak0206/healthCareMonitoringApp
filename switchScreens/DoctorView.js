@@ -4,83 +4,77 @@ import {
   StyleSheet,
   ScrollView,
   View,
+  Text,
   StatusBar,
   Modal,
   Image,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import firebase from 'react-native-firebase';
 
 import {
+  Button,
+  Form,
+  Item,
+  Label,
+  Input,
   Container,
   Header,
-  Content,
-  List,
-  ListItem,
   Left,
   Body,
   Right,
-  Thumbnail,
-  Text,
   Title,
-  Button,
+  Tab,
+  Tabs,
+  ScrollableTab,
+  Content,
+  Icon,
+  TabHeading,
 } from 'native-base';
+import firebase from 'react-native-firebase';
+
+import StackProfile from './doctorScreens/StackProfile';
+import StackPatients from './doctorScreens/StackPatients';
 
 class DoctorView extends Component {
   render() {
     return (
-      <Container>
-        <Header style={{backgroundColor: '#71D7F2'}}>
-          <Left />
-          <Body>
-            <Title>Doctor's Tab</Title>
+      <View style={{flex: 1}}>
+        <Header style={{backgroundColor: '#71D7F2'}} hasTabs>
+          <Body style={{flexDirection: 'row'}}>
+            <Icon name="heart" style={{color: '#fff'}} />
+            <Title style={{marginLeft: '5%'}}>Doctor's Tab</Title>
           </Body>
           <Right />
         </Header>
-        <Content>
-          <List>
-            <ListItem avatar>
-              <Left>
-                <Thumbnail source={require('../images/doctor.jpg')} />
-              </Left>
-              <Body>
-                <Text>Kumar Pratik</Text>
-                <Text note>Something about the patient</Text>
-              </Body>
-              <Right></Right>
-            </ListItem>
-            <ListItem avatar>
-              <Left>
-                <Thumbnail source={require('../images/doctor.jpg')} />
-              </Left>
-              <Body>
-                <Text>Jumar Thapik</Text>
-                <Text note>Something about patient 2</Text>
-              </Body>
-              <Right></Right>
-            </ListItem>
-            <ListItem avatar>
-              <Left>
-                <Thumbnail source={require('../images/doctor.jpg')} />
-              </Left>
-              <Body>
-                <Text>boris manic</Text>
-                <Text note>patient 3 info</Text>
-              </Body>
-              <Right>
-                <Text note></Text>
-              </Right>
-            </ListItem>
-          </List>
-        </Content>
-        <Button
-          onPress={() => {
-            firebase.auth().signOut();
-            this.props.navigation.navigate('LoginScreen');
-          }}>
-          <Text>Log out this button will not be there</Text>
-        </Button>
-      </Container>
+        <Tabs tabBarPosition="bottom" tabBarBackgroundColor="#71D7F2">
+          <Tab
+            tabBarUnderlineStyle={{backgroundColor: '#71D7F2'}}
+            heading="Patients"
+            tabStyle={{backgroundColor: '#71D7F2'}}
+            textStyle={{color: '#000', textAlign: 'center'}}
+            activeTabStyle={{backgroundColor: '#71D7F2'}}
+            activeTextStyle={{
+              color: '#fff',
+              fontWeight: 'normal',
+              textAlign: 'center',
+            }}>
+            <StackPatients />
+          </Tab>
+          <Tab
+            tabBarUnderlineStyle={{backgroundColor: '#71D7F2'}}
+            heading="Profile"
+            tabStyle={{backgroundColor: '#71D7F2'}}
+            textStyle={{color: '#000', textAlign: 'center'}}
+            activeTabStyle={{backgroundColor: '#71D7F2'}}
+            activeTextStyle={{
+              color: '#fff',
+              fontWeight: 'normal',
+              textAlign: 'center',
+            }}>
+            <StackProfile />
+          </Tab>
+        </Tabs>
+      </View>
     );
   }
 }
