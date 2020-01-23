@@ -71,7 +71,7 @@ class Profile extends Component {
               <Icon name="md-arrow-forward" />
             </Right>
           </CardItem>
-          <CardItem footer bordered style={{display: 'flex'}}>
+          <CardItem footer bordered>
             <Button
               onPress={() => {
                 firebase.auth().signOut();

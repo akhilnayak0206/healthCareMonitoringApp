@@ -34,7 +34,7 @@ class DoctorsInfo extends Component {
               </Text>
             </Body>
           </CardItem>
-          <CardItem footer bordered style={{display: 'flex'}}>
+          <CardItem footer bordered>
             <Button
               onPress={() => Linking.openURL(`tel:8888888888`)}
               style={{
