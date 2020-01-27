@@ -1,33 +1,42 @@
 import React, {Component} from 'react';
-import {View, ScrollView, KeyboardAvoidingView} from 'react-native';
+import {
+  View,
+  ScrollView,
+  KeyboardAvoidingView,
+  Modal,
+  ActivityIndicator,
+} from 'react-native';
 import {Form, Text, Label, Input, DatePicker, Item, Button} from 'native-base';
 import firebase from 'react-native-firebase';
+import {refId} from '../../ConstantVar';
 
 class EditProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isMounted: false,
       name: '',
       datePickerDob: new Date(),
       height: 0,
       weight: 0,
+      modalVisible: true,
     };
   }
 
   getData = () => {
-    let id = firebase.auth().currentUser && firebase.auth().currentUser.email;
-    let details = firebase
-      .database()
-      .ref('Users/Patients/' + id.replace(/@|\./gi, ''));
-    details.on('value', snapshot => {
-      let obj = snapshot.val();
-      this.setState({
-        name: obj.Name,
-        datePickerDob: obj.dateOfBirth,
-        height: obj.height,
-        weight: obj.weight,
+    if (this.state.isMounted) {
+      let details = firebase.database().ref('Users/Patients/' + refId);
+      details.on('value', snapshot => {
+        let obj = snapshot.val();
+        this.setState({
+          name: obj.Name,
+          datePickerDob: obj.dateOfBirth,
+          height: obj.height,
+          weight: obj.weight,
+          modalVisible: false,
+        });
       });
-    });
+    }
   };
 
   onSetText = (id, val) => {
@@ -37,10 +46,8 @@ class EditProfile extends Component {
   };
 
   onSend = () => {
-    let id = firebase.auth().currentUser && firebase.auth().currentUser.email;
-    let details = firebase
-      .database()
-      .ref('Users/Patients/' + id.replace(/@|\./gi, ''));
+    this.setState({modalVisible: true});
+    let details = firebase.database().ref('Users/Patients/' + refId);
     details.update(
       {
         Name: this.state.name,
@@ -49,6 +56,7 @@ class EditProfile extends Component {
         weight: this.state.weight,
       },
       err => {
+        this.setState({modalVisible: false});
         if (err) {
           alert('Data unsaved');
         } else {
@@ -60,16 +68,26 @@ class EditProfile extends Component {
   };
 
   componentDidMount() {
-    this.getData();
+    this.setState({isMounted: true}, () => this.getData());
   }
 
   componentWillUnmount() {
-    this.getData();
+    this.setState({isMounted: false});
   }
 
   render() {
     return (
       <View style={{flex: 1}}>
+        <Modal
+          animationType="slide"
+          transparent={false}
+          visible={this.state.modalVisible}
+          onRequestClose={() => this.props.navigation.pop()}>
+          <View
+            style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <ActivityIndicator size="large" />
+          </View>
+        </Modal>
         <Form>
           <Item fixedLabel>
             <Text style={{fontWeight: 'bold'}}>Name:</Text>
@@ -89,13 +107,12 @@ class EditProfile extends Component {
               modalTransparent={false}
               animationType={'fade'}
               androidMode={'default'}
-              placeHolderText={`${new Date(
-                this.state.datePickerDob,
-              ).getDate()}/${new Date(
-                this.state.datePickerDob,
-              ).getMonth()}/${new Date(
-                this.state.datePickerDob,
-              ).getFullYear()}`}
+              placeHolderText={
+                // prettier-ignore
+                `${new Date(this.state.datePickerDob).getDate()}/${
+                  new Date(this.state.datePickerDob).getMonth() +1}/${
+                  new Date(this.state.datePickerDob).getFullYear()}`
+              }
               textStyle={{color: 'black'}}
               placeHolderTextStyle={{color: 'black'}}
               onDateChange={val => this.onSetText('datePickerDob', val)}

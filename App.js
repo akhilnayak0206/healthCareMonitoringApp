@@ -13,6 +13,8 @@ import {
 
 // import {Button, Form, Item, Label, Input} from 'native-base';
 import SwitchScreens from './SwitchScreens';
+import Notes from './switchScreens/caretakerScreens/StackProfileScreens/Notes';
+import Remainder from './switchScreens/caretakerScreens/StackProfileScreens/Remainder';
 // import CaretakerView from './CaretakerView';
 // import DoctorView from './DoctorView';
 
@@ -21,7 +23,7 @@ class App extends Component {
     super(props);
   }
   render() {
-    return <SwitchScreens />;
+    return <Remainder />;
   }
 }
 
