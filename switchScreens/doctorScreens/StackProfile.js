@@ -4,7 +4,6 @@ import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import EditProfile from './StackProfileScreens/EditProfile';
 import Remainder from './StackProfileScreens/Remainder';
-import Notes from './StackProfileScreens/Notes';
 import Profile from './StackProfileScreens/Profile';
 
 const StackProfile = createStackNavigator(
@@ -17,9 +16,6 @@ const StackProfile = createStackNavigator(
     },
     Remainder: {
       screen: Remainder,
-    },
-    Notes: {
-      screen: Notes,
     },
   },
   {

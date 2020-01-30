@@ -14,8 +14,32 @@ import {
   Right,
 } from 'native-base';
 import firebase from 'react-native-firebase';
+import {refId} from '../../ConstantVar';
 
 class Profile extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'Not Loaded',
+      datePickerDob: new Date(Date.now()),
+    };
+  }
+
+  getData = () => {
+    let details = firebase.database().ref('Users/Patients/' + refId);
+    details.once('value', snapshot => {
+      let obj = snapshot.val();
+      this.setState({
+        name: obj.Name,
+        datePickerDob: obj.dateOfBirth,
+      });
+    });
+  };
+
+  componentDidMount() {
+    this.getData();
+  }
+
   render() {
     return (
       <View style={{flex: 1, padding: '2.5%'}}>
@@ -24,8 +48,12 @@ class Profile extends Component {
             <Left>
               <Thumbnail source={require('../../../images/doctor.jpg')} />
               <Body>
-                <Text>Ms. Carolyn L.</Text>
-                <Text note>Age: 69</Text>
+                <Text>{this.state.name}</Text>
+                <Text note>
+                  Age:{' '}
+                  {`${new Date(Date.now()).getFullYear() -
+                    new Date(this.state.datePickerDob).getFullYear()}`}
+                </Text>
               </Body>
             </Left>
             <Right />
@@ -51,20 +79,7 @@ class Profile extends Component {
             onPress={() => this.props.navigation.push('Remainder')}>
             <Left>
               <Body>
-                <Text>Remainders</Text>
-              </Body>
-            </Left>
-            <Right>
-              <Icon name="md-arrow-forward" />
-            </Right>
-          </CardItem>
-          <CardItem
-            button
-            bordered
-            onPress={() => this.props.navigation.push('Notes')}>
-            <Left>
-              <Body>
-                <Text>Notes</Text>
+                <Text>Edit Remainders</Text>
               </Body>
             </Left>
             <Right>

@@ -14,8 +14,32 @@ import {
   Right,
 } from 'native-base';
 import firebase from 'react-native-firebase';
+import {refId} from '../../ConstantVar';
 
 class Profile extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'Not Loaded',
+      degree: 'Not Loaded',
+    };
+  }
+
+  getData = () => {
+    let details = firebase.database().ref('Users/Doctors/' + refId);
+    details.once('value', snapshot => {
+      let obj = snapshot.val();
+      this.setState({
+        name: obj.name,
+        degree: obj.degree,
+      });
+    });
+  };
+
+  componentDidMount() {
+    this.getData();
+  }
+
   render() {
     return (
       <View style={{flex: 1, padding: '2.5%'}}>
@@ -24,11 +48,10 @@ class Profile extends Component {
             <Left>
               <Thumbnail source={require('../../../images/doctor.jpg')} />
               <Body>
-                <Text>Dr. Robert</Text>
-                <Text note>Age: 52</Text>
+                <Text>{this.state.name}</Text>
+                <Text note>Degree:{this.state.degree}</Text>
               </Body>
             </Left>
-            <Right />
           </CardItem>
           <CardItem
             button
@@ -50,19 +73,6 @@ class Profile extends Component {
             <Left>
               <Body>
                 <Text>Remainders</Text>
-              </Body>
-            </Left>
-            <Right>
-              <Icon name="md-arrow-forward" />
-            </Right>
-          </CardItem>
-          <CardItem
-            button
-            bordered
-            onPress={() => this.props.navigation.push('Notes')}>
-            <Left>
-              <Body>
-                <Text>Notes</Text>
               </Body>
             </Left>
             <Right>

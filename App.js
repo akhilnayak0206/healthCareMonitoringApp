@@ -13,7 +13,6 @@ import {
 
 // import {Button, Form, Item, Label, Input} from 'native-base';
 import SwitchScreens from './SwitchScreens';
-import Notes from './switchScreens/caretakerScreens/StackProfileScreens/Notes';
 // import CaretakerView from './CaretakerView';
 // import DoctorView from './DoctorView';
 
