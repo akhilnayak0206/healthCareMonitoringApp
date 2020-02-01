@@ -1,29 +1,64 @@
 import React, {Component} from 'react';
 import {ScrollView} from 'react-native';
 import {List, ListItem, Left, Right, Text, Thumbnail, Body} from 'native-base';
+import firebase from 'react-native-firebase';
+import {refId} from '../../ConstantVar';
 
 class Patients extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      patients: [
-        {
-          name: 'Ms. Carolyn L.',
-          age: '69',
-          note: 'She has Alzheimer',
-        },
-        {
-          name: 'Mr. hello',
-          age: '54',
-          note: 'He has epilepsy',
-        },
-        {
-          name: 'Ms. Dummy',
-          age: '36',
-          note: 'She has schizophrenia',
-        },
-      ],
+      isMounted: false,
+      patients: [],
     };
+  }
+
+  getData = () => {
+    if (this.state.isMounted) {
+      let details = firebase.database().ref('Users/Doctors/' + refId);
+      details.on('value', snapshot => {
+        let patientsID = [];
+        let patients = [];
+        let obj = snapshot.val();
+        if (obj.patients) {
+          Object.keys(obj.patients).map((key, index) => {
+            patientsID.push(obj.patients[key]);
+          });
+
+          patientsID.map(val => {
+            let getPatientDetails = firebase
+              .database()
+              .ref('Users/Patients/' + val);
+            getPatientDetails.on('value', snapshot => {
+              let newObj = snapshot.val();
+              if (newObj) {
+                let age =
+                  new Date(Date.now()).getFullYear() -
+                  new Date(newObj.dateOfBirth).getFullYear();
+                patients.push({
+                  name: newObj.Name,
+                  age,
+                  id: val,
+                });
+                this.setState({
+                  patients,
+                });
+              }
+            });
+          });
+        } else {
+          alert('No remainders ');
+        }
+      });
+    }
+  };
+
+  componentDidMount() {
+    this.setState({isMounted: true}, () => this.getData());
+  }
+
+  componentWillUnmount() {
+    this.setState({isMounted: false});
   }
 
   render() {
@@ -31,18 +66,24 @@ class Patients extends Component {
       <ScrollView>
         <List>
           {this.state.patients &&
-            this.state.patients.map((data, key) => (
+            this.state.patients.map(data => (
               <ListItem
                 avatar
-                key={key}
+                key={data.id}
                 button
-                onPress={() => this.props.navigation.push('PatientDetails')}>
+                onPress={() =>
+                  this.props.navigation.push('PatientDetails', {
+                    patientDetails: data,
+                  })
+                }>
                 <Left>
-                  <Thumbnail source={require('../../../images/doctor.jpg')} />
+                  <Thumbnail
+                    source={require('../../../images/alzheimerLogo.jpg')}
+                  />
                 </Left>
                 <Body>
                   <Text>{data.name}</Text>
-                  <Text note>{data.note}</Text>
+                  <Text note>{data.age}</Text>
                 </Body>
               </ListItem>
             ))}

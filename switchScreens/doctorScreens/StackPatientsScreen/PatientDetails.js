@@ -16,6 +16,12 @@ import {
 import firebase from 'react-native-firebase';
 
 class PatientDetails extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: this.props.navigation.getParam('patientDetails'),
+    };
+  }
   render() {
     return (
       <View style={{flex: 1, padding: '2.5%'}}>
@@ -24,8 +30,8 @@ class PatientDetails extends Component {
             <Left>
               <Thumbnail source={require('../../../images/doctor.jpg')} />
               <Body>
-                <Text>Ms. Carolyn</Text>
-                <Text note>Age: 69</Text>
+                <Text>{this.state.data.name}</Text>
+                <Text note>Age: {this.state.data.age}</Text>
               </Body>
             </Left>
             <Right />
@@ -33,7 +39,11 @@ class PatientDetails extends Component {
           <CardItem
             button
             bordered
-            onPress={() => this.props.navigation.push('Heart')}>
+            onPress={() =>
+              this.props.navigation.push('Heart', {
+                patientId: this.state.data.id,
+              })
+            }>
             <Left>
               <Body>
                 <Text>Heart Rate</Text>
