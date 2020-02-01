@@ -18,7 +18,7 @@ class Heart extends Component {
       details.on('value', snapshot => {
         let heart = [];
         let obj = snapshot.val();
-        if (obj.heartRate) {
+        if (obj && obj.heartRate) {
           Object.keys(obj.heartRate).map((key, index) => {
             heart.push(obj.heartRate[key]);
           });
@@ -27,7 +27,11 @@ class Heart extends Component {
             let first = a.time;
             let second = b.time;
             first = first.split(' ');
+            dummyFirst = first[0].split('/');
+            first[0] = dummyFirst.reverse().join();
             second = second.split(' ');
+            dummySecond = second[0].split('/');
+            second[0] = dummySecond.reverse().join();
             if (first[0] < second[0]) return 1;
 
             if (first[0] > second[0]) return -1;

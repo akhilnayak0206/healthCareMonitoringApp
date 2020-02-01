@@ -20,10 +20,12 @@ class Patients extends Component {
         let patientsID = [];
         let patients = [];
         let obj = snapshot.val();
-        if (obj.patients) {
-          Object.keys(obj.patients).map((key, index) => {
-            patientsID.push(obj.patients[key]);
-          });
+        if (obj) {
+          if (obj.patients) {
+            Object.keys(obj.patients).map((key, index) => {
+              patientsID.push(obj.patients[key]);
+            });
+          }
 
           patientsID.map(val => {
             let getPatientDetails = firebase
@@ -47,7 +49,7 @@ class Patients extends Component {
             });
           });
         } else {
-          alert('No remainders ');
+          alert('No patients ');
         }
       });
     }
