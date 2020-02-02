@@ -102,7 +102,7 @@ class DoctorsInfo extends Component {
             <Button
               onPress={() => Linking.openURL(`tel:${this.state.phone}`)}
               style={{
-                backgroundColor: '#71D7F2',
+                backgroundColor: '#00BCD4',
                 flex: 1,
                 justifyContent: 'space-around',
               }}>

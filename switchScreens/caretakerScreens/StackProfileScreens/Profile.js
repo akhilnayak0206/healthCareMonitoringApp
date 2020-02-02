@@ -94,7 +94,7 @@ class Profile extends Component {
                 firebase.auth().signOut();
               }}
               style={{
-                backgroundColor: '#71D7F2',
+                backgroundColor: '#00BCD4',
                 flex: 1,
                 alignItems: 'center',
                 justifyContent: 'center',

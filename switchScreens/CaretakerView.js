@@ -36,6 +36,7 @@ import DoctorsInfo from './caretakerScreens/DoctorsInfo';
 import Gps from './caretakerScreens/Gps';
 import Heart from './caretakerScreens/Heart';
 import StackProfile from './caretakerScreens/StackProfile';
+import Games from './caretakerScreens/Games';
 
 class CaretakerView extends Component {
   render() {
@@ -86,7 +87,7 @@ class CaretakerView extends Component {
               fontWeight: 'normal',
               textAlign: 'center',
             }}>
-            <Text>Games</Text>
+            <Games />
           </Tab>
           <Tab
             tabBarUnderlineStyle={{backgroundColor: '#71D7F2'}}
