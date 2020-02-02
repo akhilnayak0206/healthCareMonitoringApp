@@ -25,7 +25,6 @@ import {
   List,
   ListItem,
 } from 'native-base';
-import {refId} from '../../ConstantVar';
 import firebase from 'react-native-firebase';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
@@ -49,6 +48,9 @@ class Remainder extends Component {
 
   getData = () => {
     if (this.state.isMounted) {
+      const email =
+        firebase.auth().currentUser && firebase.auth().currentUser.email;
+      const refId = email && email.replace(/@|\./gi, '');
       let details = firebase.database().ref('Users/Doctors/' + refId);
       details.on('value', snapshot => {
         let obj = snapshot.val();
@@ -92,6 +94,9 @@ class Remainder extends Component {
 
   setData = id => {
     this.setState({modalVisible: true});
+    const email =
+      firebase.auth().currentUser && firebase.auth().currentUser.email;
+    const refId = email && email.replace(/@|\./gi, '');
     let details = firebase
       .database()
       .ref('Users/Doctors/' + refId + '/Remainders');
@@ -214,6 +219,9 @@ class Remainder extends Component {
           text: 'OK',
           onPress: () => {
             PushNotification.cancelLocalNotifications({id: obj.id});
+            const email =
+              firebase.auth().currentUser && firebase.auth().currentUser.email;
+            const refId = email && email.replace(/@|\./gi, '');
             let deleteAlarm = firebase
               .database()
               .ref('Users/Doctors/' + refId + '/Remainders/' + obj.key);
@@ -244,6 +252,9 @@ class Remainder extends Component {
           text: 'OK',
           onPress: () => {
             PushNotification.cancelAllLocalNotifications();
+            const email =
+              firebase.auth().currentUser && firebase.auth().currentUser.email;
+            const refId = email && email.replace(/@|\./gi, '');
             let deleteAlarm = firebase
               .database()
               .ref('Users/Doctors/' + refId + '/Remainders/');

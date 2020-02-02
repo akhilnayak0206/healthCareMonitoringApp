@@ -11,7 +11,6 @@ import {
   Icon,
 } from 'native-base';
 import firebase from 'react-native-firebase';
-import {refId} from '../ConstantVar';
 
 class DoctorsInfo extends Component {
   constructor(props) {
@@ -26,6 +25,9 @@ class DoctorsInfo extends Component {
   }
 
   getData = () => {
+    const email =
+      firebase.auth().currentUser && firebase.auth().currentUser.email;
+    const refId = email && email.replace(/@|\./gi, '');
     let details = firebase
       .database()
       .ref('Users/Patients/' + refId + '/doctorID');

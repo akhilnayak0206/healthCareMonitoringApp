@@ -56,7 +56,11 @@ class PatientDetails extends Component {
           <CardItem
             button
             bordered
-            onPress={() => this.props.navigation.push('PatientProfile')}>
+            onPress={() =>
+              this.props.navigation.push('PatientProfile', {
+                patientData: this.state.data,
+              })
+            }>
             <Left>
               <Body>
                 <Text>Profile</Text>

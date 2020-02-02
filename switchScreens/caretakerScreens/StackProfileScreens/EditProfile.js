@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import {Form, Text, Label, Input, DatePicker, Item, Button} from 'native-base';
 import firebase from 'react-native-firebase';
-import {refId} from '../../ConstantVar';
 
 class EditProfile extends Component {
   constructor(props) {
@@ -25,6 +24,9 @@ class EditProfile extends Component {
 
   getData = () => {
     if (this.state.isMounted) {
+      const email =
+        firebase.auth().currentUser && firebase.auth().currentUser.email;
+      const refId = email && email.replace(/@|\./gi, '');
       let details = firebase.database().ref('Users/Patients/' + refId);
       details.on('value', snapshot => {
         let obj = snapshot.val();
@@ -47,6 +49,9 @@ class EditProfile extends Component {
 
   onSend = () => {
     this.setState({modalVisible: true});
+    const email =
+      firebase.auth().currentUser && firebase.auth().currentUser.email;
+    const refId = email && email.replace(/@|\./gi, '');
     let details = firebase.database().ref('Users/Patients/' + refId);
     details.update(
       {

@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {ScrollView} from 'react-native';
 import {List, ListItem, Left, Right, Text, Thumbnail, Body} from 'native-base';
 import firebase from 'react-native-firebase';
-import {refId} from '../../ConstantVar';
 
 class Patients extends Component {
   constructor(props) {
@@ -15,6 +14,9 @@ class Patients extends Component {
 
   getData = () => {
     if (this.state.isMounted) {
+      const email =
+        firebase.auth().currentUser && firebase.auth().currentUser.email;
+      const refId = email && email.replace(/@|\./gi, '');
       let details = firebase.database().ref('Users/Doctors/' + refId);
       details.on('value', snapshot => {
         let patientsID = [];
@@ -41,6 +43,7 @@ class Patients extends Component {
                   name: newObj.Name,
                   age,
                   id: val,
+                  ...newObj,
                 });
                 this.setState({
                   patients,

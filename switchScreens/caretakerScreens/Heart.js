@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Text, ScrollView} from 'react-native';
 import {List, ListItem, Left, Right} from 'native-base';
-import {refId} from '../ConstantVar';
 import firebase from 'react-native-firebase';
 
 class Heart extends Component {
@@ -14,6 +13,9 @@ class Heart extends Component {
 
   getData = () => {
     if (this.state.isMounted) {
+      const email =
+        firebase.auth().currentUser && firebase.auth().currentUser.email;
+      const refId = email && email.replace(/@|\./gi, '');
       let details = firebase.database().ref('Users/Patients/' + refId);
       details.on('value', snapshot => {
         let heart = [];

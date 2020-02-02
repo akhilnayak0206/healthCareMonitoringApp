@@ -14,7 +14,6 @@ import {
   Right,
 } from 'native-base';
 import firebase from 'react-native-firebase';
-import {refId} from '../../ConstantVar';
 
 class Profile extends Component {
   constructor(props) {
@@ -26,6 +25,9 @@ class Profile extends Component {
   }
 
   getData = () => {
+    const email =
+      firebase.auth().currentUser && firebase.auth().currentUser.email;
+    const refId = email && email.replace(/@|\./gi, '');
     let details = firebase.database().ref('Users/Doctors/' + refId);
     details.once('value', snapshot => {
       let obj = snapshot.val();
