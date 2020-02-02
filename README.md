@@ -1,7 +1,7 @@
 # HealthCare Monitoring App
 
 This app helps the patient's doctor and family members to get an update about the patient suffering from Alzheimer's disease.  
-This is a **React-Native** project and the device is made with the help of raspberry pi and other sensors.  
+This is a **React-Native** project and the device is made with the help of **Raspberry Pi** and other **Sensors**.  
 The code used in raspberry pi for sensors is not attached to this repo.  
 ScreenShots of the app will be attached above in the folder named ScreenShots.
 
