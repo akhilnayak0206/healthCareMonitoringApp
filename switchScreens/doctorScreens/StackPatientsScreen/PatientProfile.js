@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, ScrollView} from 'react-native';
+import {ScrollView} from 'react-native';
 import {Form, Input, Text, Item} from 'native-base';
 
 class PatientProfile extends Component {

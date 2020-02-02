@@ -7,13 +7,9 @@ import {
   Text,
   Left,
   Thumbnail,
-  Button,
   Icon,
-  List,
-  ListItem,
   Right,
 } from 'native-base';
-import firebase from 'react-native-firebase';
 
 class PatientDetails extends Component {
   constructor(props) {

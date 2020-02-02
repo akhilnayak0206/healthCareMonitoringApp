@@ -1,21 +1,6 @@
 import React, {Component} from 'react';
-import {
-  View,
-  ScrollView,
-  KeyboardAvoidingView,
-  Modal,
-  ActivityIndicator,
-} from 'react-native';
-import {
-  Form,
-  Text,
-  Label,
-  Input,
-  DatePicker,
-  Item,
-  Button,
-  Textarea,
-} from 'native-base';
+import {View, Modal, ActivityIndicator} from 'react-native';
+import {Form, Text, Label, Input, Item, Button, Textarea} from 'native-base';
 import firebase from 'react-native-firebase';
 
 class EditProfile extends Component {
@@ -137,7 +122,7 @@ class EditProfile extends Component {
         <Button
           onPress={() => this.onSend()}
           style={{
-            backgroundColor: '#71D7F2',
+            backgroundColor: '#00BCD4',
             marginRight: '5%',
             marginLeft: '5%',
             justifyContent: 'center',

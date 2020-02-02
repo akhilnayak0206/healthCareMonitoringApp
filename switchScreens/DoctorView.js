@@ -1,37 +1,6 @@
 import React, {Component} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-  Modal,
-  Image,
-} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-
-import {
-  Button,
-  Form,
-  Item,
-  Label,
-  Input,
-  Container,
-  Header,
-  Left,
-  Body,
-  Right,
-  Title,
-  Tab,
-  Tabs,
-  ScrollableTab,
-  Content,
-  Icon,
-  TabHeading,
-} from 'native-base';
-import firebase from 'react-native-firebase';
-
+import {View} from 'react-native';
+import {Header, Body, Right, Title, Tab, Tabs, Icon} from 'native-base';
 import StackProfile from './doctorScreens/StackProfile';
 import StackPatients from './doctorScreens/StackPatients';
 

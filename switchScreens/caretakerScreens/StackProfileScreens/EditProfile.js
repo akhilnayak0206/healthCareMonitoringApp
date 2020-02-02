@@ -1,12 +1,6 @@
 import React, {Component} from 'react';
-import {
-  View,
-  ScrollView,
-  KeyboardAvoidingView,
-  Modal,
-  ActivityIndicator,
-} from 'react-native';
-import {Form, Text, Label, Input, DatePicker, Item, Button} from 'native-base';
+import {View, Modal, ActivityIndicator} from 'react-native';
+import {Form, Text, Input, DatePicker, Item, Button} from 'native-base';
 import firebase from 'react-native-firebase';
 
 class EditProfile extends Component {

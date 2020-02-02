@@ -9,8 +9,6 @@ import {
   Thumbnail,
   Button,
   Icon,
-  List,
-  ListItem,
   Right,
 } from 'native-base';
 import firebase from 'react-native-firebase';
@@ -59,8 +57,6 @@ class Profile extends Component {
               </Body>
             </Left>
             <Right />
-            {/* <Icon name="md-arrow-forward" />
-            </Right> */}
           </CardItem>
           <CardItem
             button

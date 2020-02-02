@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {ScrollView} from 'react-native';
-import {List, ListItem, Left, Right, Text, Thumbnail, Body} from 'native-base';
+import {List, ListItem, Left, Text, Thumbnail, Body} from 'native-base';
 import firebase from 'react-native-firebase';
 
 class Patients extends Component {

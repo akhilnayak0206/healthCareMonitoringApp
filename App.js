@@ -1,55 +1,6 @@
-import React, {Component} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-  Modal,
-  Image,
-} from 'react-native';
-// import LinearGradient from 'react-native-linear-gradient';
-
-// import {Button, Form, Item, Label, Input} from 'native-base';
+import React from 'react';
 import SwitchScreens from './SwitchScreens';
-// import CaretakerView from './CaretakerView';
-// import DoctorView from './DoctorView';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return <SwitchScreens />;
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    padding: 20,
-  },
-  linearGradient: {
-    flex: 1,
-    alignItems: 'center',
-    borderRadius: 10,
-  },
-  backgroundImage: {
-    width: '100%',
-    height: '30%',
-    resizeMode: 'contain',
-  },
-  text: {
-    color: 'black',
-  },
-  button: {
-    margin: 20,
-    marginTop: 40,
-    padding: 0,
-    backgroundColor: '#71D7F2',
-  },
-});
+const App = () => <SwitchScreens />;
 
 export default App;

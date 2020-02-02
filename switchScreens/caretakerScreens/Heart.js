@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Text, ScrollView} from 'react-native';
-import {List, ListItem, Left, Right} from 'native-base';
+import {List, ListItem, Left} from 'native-base';
 import firebase from 'react-native-firebase';
 
 class Heart extends Component {

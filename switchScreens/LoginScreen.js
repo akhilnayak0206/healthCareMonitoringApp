@@ -1,15 +1,5 @@
 import React, {Component} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-  Modal,
-  Image,
-} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+import {StyleSheet, Text, Image} from 'react-native';
 
 import {Button, Form, Item, Label, Input} from 'native-base';
 
@@ -37,15 +27,6 @@ class LoginScreen extends Component {
     } catch (error) {
       alert(error.toString());
     }
-    //   if(this.state.email=="caretaker@gmail.com" && this.state.password=="123456"){
-    //      this.props.navigation.navigate('CaretakerView')
-    //   }
-    //   else if(this.state.email=="doctor@gmail.com" && this.state.password=="123456"){
-    //     this.props.navigation.navigate('DoctorView')
-    //  }
-    //  else{
-    //      alert("Wrong Password")
-    //  }
   };
   render() {
     return (
@@ -78,11 +59,7 @@ class LoginScreen extends Component {
           rounded
           style={styles.button}
           onPress={() => this.onSubmit()}>
-          {/* <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}}
-            colors={['#B7E8F5', '#9CE3F6', '#71D7F2']}
-            style={styles.linearGradient}> */}
           <Text style={styles.text}>Log In</Text>
-          {/* </LinearGradient> */}
         </Button>
       </Form>
     );

@@ -51,7 +51,7 @@ class Profile extends Component {
               <Thumbnail source={require('../../../images/doctor.jpg')} />
               <Body>
                 <Text>{this.state.name}</Text>
-                <Text note>Degree:{this.state.degree}</Text>
+                <Text note>{this.state.degree}</Text>
               </Body>
             </Left>
           </CardItem>
@@ -87,7 +87,7 @@ class Profile extends Component {
                 firebase.auth().signOut();
               }}
               style={{
-                backgroundColor: '#71D7F2',
+                backgroundColor: '#00BCD4',
                 flex: 1,
                 alignItems: 'center',
                 justifyContent: 'center',
