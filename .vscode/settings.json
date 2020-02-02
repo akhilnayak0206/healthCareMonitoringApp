@@ -1,10 +1,12 @@
 {
-    "cSpell.words": [
-        "alzhemier",
-        "arrowleft",
-        "arrowright",
-        "berriar",
-        "datetimepicker"
-    ],
-    "java.configuration.updateBuildConfiguration": "interactive"
+  "cSpell.words": [
+    "Insta",
+    "alzhemier",
+    "arrowleft",
+    "arrowright",
+    "berriar",
+    "datetimepicker",
+    "gradlew"
+  ],
+  "java.configuration.updateBuildConfiguration": "interactive"
 }
