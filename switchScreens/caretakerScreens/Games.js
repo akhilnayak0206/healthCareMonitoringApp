@@ -145,6 +145,9 @@ const Games = () => {
                       radioSelected(allQuestions[questionID].option1)
                     }>
                     <Radio
+                      onPress={() =>
+                        radioSelected(allQuestions[questionID].option1)
+                      }
                       color={'#f0ad4e'}
                       selectedColor={'#5cb85c'}
                       selected={
@@ -163,6 +166,9 @@ const Games = () => {
                       radioSelected(allQuestions[questionID].option2)
                     }>
                     <Radio
+                      onPress={() =>
+                        radioSelected(allQuestions[questionID].option2)
+                      }
                       color={'#f0ad4e'}
                       selectedColor={'#5cb85c'}
                       selected={
@@ -181,6 +187,9 @@ const Games = () => {
                       radioSelected(allQuestions[questionID].option3)
                     }>
                     <Radio
+                      onPress={() =>
+                        radioSelected(allQuestions[questionID].option3)
+                      }
                       color={'#f0ad4e'}
                       selectedColor={'#5cb85c'}
                       selected={
@@ -199,6 +208,9 @@ const Games = () => {
                       radioSelected(allQuestions[questionID].option4)
                     }>
                     <Radio
+                      onPress={() =>
+                        radioSelected(allQuestions[questionID].option4)
+                      }
                       color={'#f0ad4e'}
                       selectedColor={'#5cb85c'}
                       selected={

@@ -44,9 +44,11 @@ class Heart extends Component {
               return 0;
             }
           });
-          this.setState({
-            heart,
-          });
+          if (this.state.isMounted) {
+            this.setState({
+              heart,
+            });
+          }
         } else {
           alert('No Heart Rate found. Please check the device ');
         }

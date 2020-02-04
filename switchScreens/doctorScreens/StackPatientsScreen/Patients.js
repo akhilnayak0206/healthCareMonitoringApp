@@ -18,7 +18,7 @@ class Patients extends Component {
         firebase.auth().currentUser && firebase.auth().currentUser.email;
       const refId = email && email.replace(/@|\./gi, '');
       let details = firebase.database().ref('Users/Doctors/' + refId);
-      details.on('value', snapshot => {
+      details.once('value', snapshot => {
         let patientsID = [];
         let patients = [];
         let obj = snapshot.val();
@@ -33,7 +33,7 @@ class Patients extends Component {
             let getPatientDetails = firebase
               .database()
               .ref('Users/Patients/' + val);
-            getPatientDetails.on('value', snapshot => {
+            getPatientDetails.once('value', snapshot => {
               let newObj = snapshot.val();
               if (newObj) {
                 let age =
